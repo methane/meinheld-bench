@@ -1,3 +1,4 @@
+from __future__ import print_function
 import subprocess
 import time
 
@@ -12,19 +13,21 @@ time.sleep(1)
 subprocess.check_call(wrk_command)
 gunicorn.terminate()
 
+print()
 print("chaussette (1 process)")
 chaussette = subprocess.Popen(chaussette_command)
 time.sleep(1)
 subprocess.check_call(wrk_command)
 chaussette.terminate()
 
+print()
 print("Gunicorn (2 processes)")
 gunicorn = subprocess.Popen(gunicorn_command + ["-w", "2"])
 time.sleep(1)
 subprocess.check_call(wrk_command)
 gunicorn.terminate()
 
-
+print()
 print("circus+chaussette (2 processes)")
 circus = subprocess.Popen(circus_command)
 time.sleep(1)

@@ -1,4 +1,8 @@
-```
+Meinheld doesn't include process manager.
+Gunicorn and Circus+Chaussette can manage multi meinheld processes.
+
+This benchmark measures which manager is more lightweight.
+
 $ python bench.py
 Gunicorn (1 process)
 Running 10s test @ http://localhost:8080/
@@ -9,6 +13,7 @@ Running 10s test @ http://localhost:8080/
   320485 requests in 10.00s, 50.12MB read
 Requests/sec:  32050.15
 Transfer/sec:      5.01MB
+
 chaussette (1 process)
 2014-07-03 01:30:40 [96805] [INFO] Application is <function application at 0x103e0cde8>
 2014-07-03 01:30:40 [96805] [INFO] Serving on 0.0.0.0:8080
@@ -21,6 +26,7 @@ Running 10s test @ http://localhost:8080/
   363551 requests in 10.00s, 56.86MB read
 Requests/sec:  36358.38
 Transfer/sec:      5.69MB
+
 Gunicorn (2 processes)
 Running 10s test @ http://localhost:8080/
   2 threads and 20 connections
@@ -30,6 +36,7 @@ Running 10s test @ http://localhost:8080/
   397083 requests in 10.00s, 62.10MB read
 Requests/sec:  39709.71
 Transfer/sec:      6.21MB
+
 circus+chaussette (2 processes)
 2014-07-03 01:31:02 circus[96870] [INFO] Starting master on pid 96870
 2014-07-03 01:31:02 circus[96870] [INFO] sockets started
@@ -52,4 +59,3 @@ Transfer/sec:      7.56MB
 2014-07-03 01:31:13 circus[96870] [INFO] Got signal SIG_TERM
 2014-07-03 01:31:13 circus[96870] [INFO] Arbiter exiting
 2014-07-03 01:31:14 circus[96870] [INFO] webapp stopped
-```
